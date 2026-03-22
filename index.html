@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crop Recommendation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-green-50 min-h-screen flex flex-col justify-center py-10">
+
+<div class="max-w-lg mx-auto bg-white shadow-lg rounded-xl p-8 border border-gray-200 w-full">
+    
+    <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-green-700 mb-2">🌱 Crop Recommendation System</h1>
+        <p class="text-gray-500 text-sm">Enter the soil and weather conditions for your farm.</p>
+    </div>
+
+<form action="/predict" method="POST">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+            
+            <div class="col-span-1">
+                <label class="block text-sm font-semibold text-gray-700 mb-1" for="N">Nitrogen (N)</label>
+                <input id="N" name="N" type="number" step="any" required placeholder="e.g. 90" 
+                       class="w-full border border-gray-300 rounded p-2 focus:border-green-500 outline-none">
+            </div>
+
+            <div class="col-span-1">
+                <label class="block text-sm font-semibold text-gray-700 mb-1" for="P">Phosphorus (P)</label>
+                <input id="P" name="P" type="number" step="any" required placeholder="e.g. 42" 
+                       class="w-full border border-gray-300 rounded p-2 focus:border-green-500 outline-none">
+            </div>
+
+            <div class="col-span-1">
+                <label class="block text-sm font-semibold text-gray-700 mb-1" for="K">Potassium (K)</label>
+                <input id="K" name="K" type="number" step="any" required placeholder="e.g. 43" 
+                       class="w-full border border-gray-300 rounded p-2 focus:border-green-500 outline-none">
+            </div>
+
+            <div class="col-span-1">
+                <label class="block text-sm font-semibold text-gray-700 mb-1" for="temperature">Temperature (°C)</label>
+                <input id="temperature" name="temperature" type="number" step="any" required placeholder="e.g. 25.0" 
+                       class="w-full border border-gray-300 rounded p-2 focus:border-green-500 outline-none">
+            </div>
+
+            <div class="col-span-1">
+                <label class="block text-sm font-semibold text-gray-700 mb-1" for="humidity">Humidity (%)</label>
+                <input id="humidity" name="humidity" type="number" step="any" required placeholder="e.g. 80.0" 
+                       class="w-full border border-gray-300 rounded p-2 focus:border-green-500 outline-none">
+            </div>
+
+            <div class="col-span-1">
+                <label class="block text-sm font-semibold text-gray-700 mb-1" for="ph">Soil pH</label>
+                <input id="ph" name="ph" type="number" step="any" required placeholder="e.g. 6.5" 
+                       class="w-full border border-gray-300 rounded p-2 focus:border-green-500 outline-none">
+            </div>
+
+            <div class="col-span-2">
+                <label class="block text-sm font-semibold text-gray-700 mb-1" for="rainfall">Rainfall (mm)</label>
+                <input id="rainfall" name="rainfall" type="number" step="any" required placeholder="e.g. 200" 
+                       class="w-full border border-gray-300 rounded p-2 focus:border-green-500 outline-none">
+            </div>
+
+        </div>
+
+        <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 rounded hover:bg-green-700 transition">
+            Predict Crop
+        </button>
+
+    </form>
+    
+    <div class="text-center mt-4">
+        <p class="text-gray-400 text-xs">Developed by Sathiya</p>
+    </div>
+
+</div>
+
+<!-- JavaScript to shift focus to next input on Enter -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll('input[type="number"]');
+    
+    inputs.forEach((input, index) => {
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); 
+                
+                if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                } else {
+                    document.querySelector('form').submit();
+                }
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

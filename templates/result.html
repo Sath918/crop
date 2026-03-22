@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crop Recommendation Result</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-green-50 min-h-screen py-10 flex flex-col items-center">
+
+<div class="max-w-lg mx-auto bg-white shadow-lg rounded-xl p-8 border border-gray-200 w-full mt-10">
+    
+    <h1 class="text-2xl font-bold text-center text-green-700 mb-4">Recommended Crop</h1>
+    
+    <div class="bg-green-100 text-green-800 text-center text-3xl p-6 rounded-lg font-bold capitalize mb-8 border border-green-200">
+        {{ prediction }}
+    </div>
+
+    <h2 class="text-lg font-bold text-gray-700 mb-3 border-b pb-2">Your Input Values</h2>
+    
+    <div class="grid grid-cols-2 gap-3 mb-6 bg-gray-50 p-4 rounded border text-sm text-gray-600">
+        <div><b>Nitrogen (N):</b> {{ inputs.N or 0 }}</div>
+        <div><b>Phosphorus (P):</b> {{ inputs.P or 0 }}</div>
+        <div><b>Potassium (K):</b> {{ inputs.K or 0 }}</div>
+        <div><b>Temperature:</b> {{ inputs.temperature or '0.0' }} °C</div>
+        <div><b>Humidity:</b> {{ inputs.humidity or '0.0' }} %</div>
+        <div><b>pH Level:</b> {{ inputs.ph or '0.0' }}</div>
+        <div class="col-span-2"><b>Rainfall:</b> {{ inputs.rainfall or '0.0' }} mm</div>
+    </div>
+
+    <!-- Farmer References Section -->
+    <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg text-yellow-800 text-sm mb-6">
+        <h3 class="font-bold mb-2">📝 Farmer References & Tips</h3>
+        <ul class="list-disc pl-5 space-y-1">
+            <li>Ensure soil is properly prepared before sowing.</li>
+            <li>Consult local agricultural experts for specific fertilizers.</li>
+            <li>Monitor daily weather changes.</li>
+        </ul>
+    </div>
+
+    <div class="text-center">
+        <a href="/" class="inline-block bg-gray-700 text-white font-semibold py-2 px-6 rounded hover:bg-gray-800 transition">
+            Back to Home Page
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import pickle
+import os
 import numpy as np
 
 app = Flask(__name__, static_folder='.', static_url_path='')
@@ -44,5 +45,7 @@ def predict():
 
     return render_template("result.html", prediction=prediction, inputs=data)
 
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
